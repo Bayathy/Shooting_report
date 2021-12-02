@@ -3,20 +3,42 @@
 void ShootingApp::init() {
 	App::init();
 	fighter.init();
+	fos.push_back(&fighter);
+	for (size_t i = 0; i < N_ENEMY_A; i++)
+	{
+		enemyA[i].init();
+		fos.push_back(&enemyA[i]);
+	}
+	for (size_t i = 0; i < N_MISSILE; i++)
+	{
+		fos.push_back(&missile[i]);
+	}
 }
 
 void ShootingApp::cleanup() {
 	App::cleanup();
-	fighter.cleanup();
+	for (size_t i = 0; i < fos.size(); i++)
+	{
+		fos[i]->cleanup();
+	}
+	fos.clear();
 }
 
 void ShootingApp::update() {
 	App::update();
+	for (int i = 0; i < N_ENEMY_A; i++)
+		enemyA[i].update();
+	for (int i = 0; i < N_MISSILE; i++)
+		missile[i].update();
 	fighter.update();
 }
 
 void ShootingApp::draw() {
 	App::draw();
+	for (int i = 0; i < N_ENEMY_A; i++)
+		enemyA[i].draw();
+	for (int i = 0; i < N_MISSILE; i++)
+		missile[i].draw();
 	fighter.draw();
 }
 
