@@ -23,6 +23,7 @@ void Fighter::init()
 void Fighter::cleanup()
 {
 	FlyingObject::cleanup();
+	missiles.clear();
 }
 
 void Fighter::update()
@@ -68,4 +69,19 @@ void Fighter::move(DIRECTION dir)
 void Fighter::stop(DIRECTION dir)
 {
 	this->dir &= ~dir;
+}
+
+void Fighter::loadMissile(Missile* m)
+{
+	missiles.push_back(m);
+}
+
+void Fighter::shoot()
+{
+	for (size_t i = 0; i < missiles.size(); i++)
+		if (!(missiles[i]->status & ACTIVE)) {
+			missiles[i]->init();
+			missiles[i]->fire(x, y - radius, 0, -400);
+			return;
+		}
 }
