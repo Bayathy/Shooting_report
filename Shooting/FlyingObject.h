@@ -10,23 +10,26 @@ protected:
 	double vy;
 	double radius;
 	Timer mtimer;
+	Timer etimer;
 	Timer elapsed;	// 前回のupdateからの経過時間計測用
 public:
 	unsigned int status;
 
 	enum STATUS
 	{
-		ACTIVE = 0,
+		ACTIVE = 1,
 		COLLISION = 2
 	};
 
 	FlyingObject();
-	virtual ~FlyingObject();
+	virtual ~FlyingObject();       
 
 	virtual void init();
 	virtual void cleanup();
 	virtual void update();
 	virtual void draw();
+	void drawExplosion();
 	void drawDebug();
+	bool checkCollision(FlyingObject* fo);
 };
 

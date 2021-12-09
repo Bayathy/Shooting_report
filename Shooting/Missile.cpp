@@ -4,7 +4,7 @@
 void Missile::init(){
 	FlyingObject::init();
 	vx = vy = 0;
-	radius = 0;
+	radius = 10;
 }
 
 void Missile::update() {
@@ -15,6 +15,7 @@ void Missile::update() {
 	x += vx * dt;
 	y += vy * dt;
 	elapsed.reset();
+
 }
 
 void Missile::draw() {

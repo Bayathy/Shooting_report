@@ -1,19 +1,19 @@
 #define _USE_MATH_DEFINES	// Visual C++‚ÅM_PI‚ðŽg‚¦‚é‚æ‚¤‚É
+#include "EnemyB.h"
 #include <cmath>
 #include "ShootingApp.h"
-#include "EnemyA.h"
 
-EnemyA::EnemyA() : Enemy()
+EnemyB::EnemyB() : Enemy() 
 {
-	point = 20;
+	point = 10;
 }
 
 
-EnemyA::~EnemyA()
+EnemyB::~EnemyB()
 {
 }
 
-void EnemyA::init()
+void EnemyB::init()
 {
 	FlyingObject::init();
 
@@ -22,13 +22,13 @@ void EnemyA::init()
 	x = 100 + 500 * App::rand();
 	y = 100 + 200 * App::rand();
 
-	vx = 100 + 200 * App::rand();
-	vy = 100 + 200 * App::rand();
+	vx = 150 + 200 * App::rand();
+	vy = 150 + 200 * App::rand();
 
-	radius = 30;
+	radius = 20;
 }
 
-void EnemyA::update()
+void EnemyB::update()
 {
 	double dt = elapsed.get();
 	double mt = mtimer.get();
@@ -47,7 +47,7 @@ void EnemyA::update()
 	elapsed.reset();
 }
 
-void EnemyA::draw()
+void EnemyB::draw()
 {
-	Ellipse(App::hDC, x - radius, y - radius, x + radius, y + radius);
+	Rectangle(App::hDC, x - radius, y - radius, x + radius, y + radius);
 }
