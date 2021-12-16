@@ -8,6 +8,13 @@ void Missile::init(){
 }
 
 void Missile::update() {
+	if(status & COLLISION)
+	{
+		if (etimer.get() > 0.5)
+			cleanup();
+		return;
+	}
+
 	if (x < 0 || x > 799 || y < 0 || y > 599)
 		cleanup();
 
@@ -19,6 +26,12 @@ void Missile::update() {
 }
 
 void Missile::draw() {
+	if (status & COLLISION)
+	{
+		drawExplosion();
+		return;
+	}
+
 	Ellipse(App::hDC, x - radius, y - radius, x + radius, y + radius);
 }
 

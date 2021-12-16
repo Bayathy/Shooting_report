@@ -30,6 +30,12 @@ void EnemyB::init()
 
 void EnemyB::update()
 {
+	if(status & COLLISION)
+	{
+		if (etimer.get() > 0.5)
+			cleanup();
+		return;
+	}
 	double dt = elapsed.get();
 	double mt = mtimer.get();
 	double dx, dy;
@@ -49,5 +55,10 @@ void EnemyB::update()
 
 void EnemyB::draw()
 {
+	if (status & COLLISION)
+	{
+		drawExplosion();
+		return;
+	}
 	Rectangle(App::hDC, x - radius, y - radius, x + radius, y + radius);
 }

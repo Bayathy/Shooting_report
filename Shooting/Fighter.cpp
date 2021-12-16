@@ -50,6 +50,11 @@ void Fighter::update()
 
 void Fighter::draw()
 {
+	if (status & COLLISION)
+	{
+		drawExplosion();
+		return;
+	}
 	LPCWSTR c;
 	c = TEXT("|");
 	TextOut(App::hDC, (int)x - 2, (int)y - 22, c, lstrlen(c));
@@ -82,6 +87,7 @@ void Fighter::shoot()
 		if (!(missiles[i]->status & ACTIVE)) {
 			missiles[i]->init();
 			missiles[i]->fire(x, y - radius, 0, -400);
+			Sound::getInstance()->request(TEXT("shoot"));
 			return;
 		}
 }

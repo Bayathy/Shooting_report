@@ -29,25 +29,10 @@ void FlyingObject::cleanup()
 
 void FlyingObject::update()
 {
-
-	if (status & COLLISION)
-	{
-		if (etimer.get() > 0.5)
-			cleanup();
-		return;
-	}
-
 }
 
 void FlyingObject::draw()
 {
-
-	if (status & COLLISION)
-	{
-		drawExplosion();
-		return; 
-	}
-
 }
 
 void FlyingObject::drawExplosion()
@@ -70,6 +55,7 @@ void FlyingObject::drawExplosion()
 	}
 	else
 	{
+		Sound::getInstance()->request(TEXT("explosion"));
 		c = TEXT("(*)");
 		TextOut(App::hDC, (int)x - 15, (int)y - 5, c, lstrlen(c));
 	}
@@ -93,7 +79,7 @@ bool FlyingObject::checkCollision(FlyingObject* fo) {
 	if (!(fo->status & ACTIVE))
 		return false;
 
-	if (sqr(radius + fo -> radius) < (sqr(x - fo->x) + sqr(y - fo -> y)))
+	if (sqr(radius + fo -> radius) < (sqr(x - fo-> x) + sqr(y - fo -> y)))
 		return false;
 
 	if (!(status & COLLISION)) {

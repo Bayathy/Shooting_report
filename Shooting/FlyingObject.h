@@ -1,5 +1,6 @@
 #pragma once
 #include "Timer.h"
+#include "Sound.h"
 
 class FlyingObject
 {

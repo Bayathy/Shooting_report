@@ -1,6 +1,11 @@
 #include "ShootingApp.h"
 
 void ShootingApp::init() {
+	Sound::getInstance()->registerFile(TEXT("bomb2.mp3"), TEXT("explosion"));
+	Sound::getInstance()->registerFile(TEXT("shot1.mp3"), TEXT("shoot"));
+	Sound::getInstance()->registerFile(TEXT("menuettm.mp3"), TEXT("bgm"));
+	Sound::getInstance()->request(TEXT("bgm"));
+
 	fighter.init();
 	fos.push_back(&fighter);
 	for (size_t i = 0; i < N_ENEMY_A; i++)
@@ -33,6 +38,7 @@ void ShootingApp::cleanup() {
 	fos.clear();
 	enemies.clear();
 	missiles.clear();
+	Sound::getInstance()->cleanup();
 }
 
 void ShootingApp::update() {
@@ -66,6 +72,7 @@ void ShootingApp::update() {
 
 void ShootingApp::draw() {
 	//App::draw();
+	Sound::getInstance()->play();
 	for (size_t i = 0; i < fos.size(); i++)
 	{
 		if (fos[i]->status & FlyingObject::ACTIVE)
