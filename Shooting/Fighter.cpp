@@ -28,7 +28,12 @@ void Fighter::cleanup()
 
 void Fighter::update()
 {
-	FlyingObject::update();
+	if (status & COLLISION) { // 衝突していたら座標を更新しない
+		if (etimer.get() > 0.5) // 衝突期間が終わったら、
+			cleanup(); // 終了手続き
+		return;
+	}
+
 
 	double dx = 0;
 	double dy = 0;
