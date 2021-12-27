@@ -3,5 +3,9 @@
 class Enemy :
     public FlyingObject
 {
+public:
+    int point;
+
+    Enemy();
 };
 

@@ -28,7 +28,12 @@ void Fighter::cleanup()
 
 void Fighter::update()
 {
-	FlyingObject::update();
+	if (status & COLLISION) { // 衝突していたら座標を更新しない
+		if (etimer.get() > 0.5) // 衝突期間が終わったら、
+			cleanup(); // 終了手続き
+		return;
+	}
+
 
 	double dx = 0;
 	double dy = 0;
@@ -50,6 +55,11 @@ void Fighter::update()
 
 void Fighter::draw()
 {
+	if (status & COLLISION)
+	{
+		drawExplosion();
+		return;
+	}
 	LPCWSTR c;
 	c = TEXT("|");
 	TextOut(App::hDC, (int)x - 2, (int)y - 22, c, lstrlen(c));
@@ -82,6 +92,7 @@ void Fighter::shoot()
 		if (!(missiles[i]->status & ACTIVE)) {
 			missiles[i]->init();
 			missiles[i]->fire(x, y - radius, 0, -400);
+			Sound::getInstance()->request(TEXT("shoot"));
 			return;
 		}
 }

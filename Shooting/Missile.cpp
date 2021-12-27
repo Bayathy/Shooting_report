@@ -4,10 +4,17 @@
 void Missile::init(){
 	FlyingObject::init();
 	vx = vy = 0;
-	radius = 0;
+	radius = 10;
 }
 
 void Missile::update() {
+	if(status & COLLISION)
+	{
+		if (etimer.get() > 0.5)
+			cleanup();
+		return;
+	}
+
 	if (x < 0 || x > 799 || y < 0 || y > 599)
 		cleanup();
 
@@ -15,9 +22,16 @@ void Missile::update() {
 	x += vx * dt;
 	y += vy * dt;
 	elapsed.reset();
+
 }
 
 void Missile::draw() {
+	if (status & COLLISION)
+	{
+		drawExplosion();
+		return;
+	}
+
 	Ellipse(App::hDC, x - radius, y - radius, x + radius, y + radius);
 }
 

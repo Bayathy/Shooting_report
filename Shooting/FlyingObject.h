@@ -1,5 +1,6 @@
 #pragma once
 #include "Timer.h"
+#include "Sound.h"
 
 class FlyingObject
 {
@@ -10,6 +11,7 @@ protected:
 	double vy;
 	double radius;
 	Timer mtimer;
+	Timer etimer;
 	Timer elapsed;	// 前回のupdateからの経過時間計測用
 public:
 	unsigned int status;
@@ -21,12 +23,14 @@ public:
 	};
 
 	FlyingObject();
-	virtual ~FlyingObject();
+	virtual ~FlyingObject();       
 
 	virtual void init();
 	virtual void cleanup();
 	virtual void update();
 	virtual void draw();
+	void drawExplosion();
 	void drawDebug();
+	bool checkCollision(FlyingObject* fo);
 };
 
