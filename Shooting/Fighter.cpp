@@ -23,7 +23,8 @@ void Fighter::init()
 void Fighter::cleanup()
 {
 	FlyingObject::cleanup();
-	missiles.clear();
+	Amissiles.clear();
+	Bmissiles.clear();
 }
 
 void Fighter::update()
@@ -81,17 +82,33 @@ void Fighter::stop(DIRECTION dir)
 	this->dir &= ~dir;
 }
 
-void Fighter::loadMissile(Missile* m)
+void Fighter::loadMissileA(Missile* m)
 {
-	missiles.push_back(m);
+	Amissiles.push_back(m);
 }
 
-void Fighter::shoot()
+void Fighter::loadMissileB(Missile* m)
 {
-	for (size_t i = 0; i < missiles.size(); i++)
-		if (!(missiles[i]->status & ACTIVE)) {
-			missiles[i]->init();
-			missiles[i]->fire(x, y - radius, 0, -400);
+	Bmissiles.push_back(m);
+}
+
+void Fighter::shootA()
+{
+	for (size_t i = 0; i < Amissiles.size(); i++)
+		if (!(Amissiles[i]->status & ACTIVE)) {
+			Amissiles[i]->init();
+			Amissiles[i]->fire(x, y - radius, 0, -400);
+			Sound::getInstance()->request(TEXT("shoot"));
+			return;
+		}
+}
+
+void Fighter::shootB()
+{
+	for (size_t i = 0; i < Bmissiles.size(); i++)
+		if (!(Bmissiles[i]->status & ACTIVE)) {
+			Bmissiles[i]->init();
+			Bmissiles[i]->fire(x, y - radius, 0, -800);
 			Sound::getInstance()->request(TEXT("shoot"));
 			return;
 		}

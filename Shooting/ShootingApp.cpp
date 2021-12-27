@@ -22,9 +22,13 @@ void ShootingApp::init() {
 	}
 	for (size_t i = 0; i < N_MISSILE; i++)
 	{
-		fighter.loadMissile(&missile[i]);
-		missiles.push_back(&missile[i]);
-		fos.push_back(&missile[i]);
+		fighter.loadMissileA(&missileA[i]);
+		fighter.loadMissileB(&missileB[i]);
+
+		missiles.push_back(&missileA[i]);
+		missiles.push_back(&missileB[i]);
+		fos.push_back(&missileB[i]);
+		fos.push_back(&missileA[i]);
 	}
 	score.init();
 }
@@ -98,7 +102,10 @@ void ShootingApp::keyDown(WPARAM key) {
 		fighter.move(Fighter::BACK);
 		break;
 	case VK_SPACE:
-		fighter.shoot();
+		fighter.shootA();
+		break;
+	case 0x56: //VƒL[
+		fighter.shootB();
 		break;
 	default:
 		break;

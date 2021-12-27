@@ -17,13 +17,17 @@ public:
 		RIGHT = 8
 	};
 
-	std::vector<Missile*> missiles;
+	std::vector<Missile*> Amissiles;
+	std::vector<Missile*> Bmissiles;
 
 	Fighter();
 	~Fighter();
 
-	void loadMissile(Missile* m);
-	void shoot();
+	void loadMissileA(Missile* m);
+	void loadMissileB(Missile* m);
+
+	void shootA();
+	void shootB();
 	void init();
 	void cleanup();
 	void update();

@@ -57,6 +57,12 @@
     <ClInclude Include="Sound.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="MissileA.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="MissileB.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Shooting.cpp">
@@ -93,6 +99,12 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Sound.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="MissileA.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="MissileB.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

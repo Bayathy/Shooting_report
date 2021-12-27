@@ -2,9 +2,6 @@
 #include "ShootingApp.h"
 
 void Missile::init(){
-	FlyingObject::init();
-	vx = vy = 0;
-	radius = 10;
 }
 
 void Missile::update() {

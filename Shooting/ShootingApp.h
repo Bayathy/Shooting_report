@@ -3,7 +3,8 @@
 #include "Fighter.h"
 #include "EnemyA.h"
 #include "EnemyB.h"
-#include "Missile.h"
+#include "MissileA.h"
+#include "MissileB.h"
 #include "Score.h"
 #include "Sound.h" 
 
@@ -20,7 +21,8 @@ class ShootingApp :public App
         Fighter fighter;
         EnemyA enemyA[N_ENEMY_A];
         EnemyB enemyB[N_ENEMY_B];
-        Missile missile[N_MISSILE];
+        MissileA missileA[N_MISSILE];
+        MissileB missileB[N_MISSILE];
 
         std::vector<FlyingObject*> fos;
         std::vector<Enemy*> enemies;
