@@ -29,7 +29,7 @@ void ShootingApp::update() {
 	//App::update();
 	for (size_t i = 0; i < fos.size(); i++)
 	{
-		if (fos[i]->status== FlyingObject::ACTIVE)
+		if (fos[i]->status & FlyingObject::ACTIVE)
 				fos[i]->update();
 	}
 }
@@ -38,7 +38,7 @@ void ShootingApp::draw() {
 	//App::draw();
 	for (size_t i = 0; i < fos.size(); i++)
 	{
-		if (fos[i]->status == FlyingObject::ACTIVE)
+		if (fos[i]->status & FlyingObject::ACTIVE)
 				fos[i]->draw();
 	}
 }

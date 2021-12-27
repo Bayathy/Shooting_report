@@ -16,7 +16,7 @@ public:
 
 	enum STATUS
 	{
-		ACTIVE = 0,
+		ACTIVE = 1,
 		COLLISION = 2
 	};
 
