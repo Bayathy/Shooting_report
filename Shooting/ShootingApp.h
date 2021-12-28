@@ -3,6 +3,7 @@
 #include "Fighter.h"
 #include "EnemyA.h"
 #include "EnemyB.h"
+#include "EnemyC.h"
 #include "MissileA.h"
 #include "MissileB.h"
 #include "Score.h"
@@ -12,6 +13,7 @@
 
 #define N_ENEMY_A 2
 #define N_ENEMY_B 3
+#define N_ENEMY_C 5
 #define N_MISSILE 10
 
 
@@ -21,6 +23,7 @@ class ShootingApp :public App
         Fighter fighter;
         EnemyA enemyA[N_ENEMY_A];
         EnemyB enemyB[N_ENEMY_B];
+        EnemyC enemyC[N_ENEMY_C];
         MissileA missileA[N_MISSILE];
         MissileB missileB[N_MISSILE];
 

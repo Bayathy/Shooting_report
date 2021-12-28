@@ -20,6 +20,12 @@ void ShootingApp::init() {
 		enemies.push_back(&enemyB[i]);
 		fos.push_back(&enemyB[i]);
 	}
+	for (size_t i = 0; i < N_ENEMY_C; i++)
+	{
+		enemyC[i].init();
+		enemies.push_back(&enemyC[i]);
+		fos.push_back(&enemyC[i]);
+	}
 	for (size_t i = 0; i < N_MISSILE; i++)
 	{
 		fighter.loadMissileA(&missileA[i]);
@@ -61,6 +67,8 @@ void ShootingApp::update() {
 				score.add(enemies[i]->point);
 		enemies[i]->checkCollision(&fighter);
 	}
+
+
 
 	for (size_t i = 0; i < enemies.size(); i++)
 	{

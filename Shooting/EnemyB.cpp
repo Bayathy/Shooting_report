@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES	// Visual C++‚ÅM_PI‚ðŽg‚¦‚é‚æ‚¤‚É
+#define _USE_MATH_DEFINES	
 #include "EnemyB.h"
 #include <cmath>
 #include "ShootingApp.h"
@@ -6,6 +6,7 @@
 EnemyB::EnemyB() : Enemy() 
 {
 	point = 10;
+	phase = 0;
 }
 
 
