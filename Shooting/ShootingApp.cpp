@@ -1,9 +1,9 @@
 #include "ShootingApp.h"
 
 void ShootingApp::init() {
-	Sound::getInstance()->registerFile(TEXT("bomb2.mp3"), TEXT("explosion"));
-	Sound::getInstance()->registerFile(TEXT("shot1.mp3"), TEXT("shoot"));
-	Sound::getInstance()->registerFile(TEXT("menuettm.mp3"), TEXT("bgm"));
+	Sound::getInstance()->registerFile(TEXT("Explosion.wav"), TEXT("explosion"));
+	Sound::getInstance()->registerFile(TEXT("Gunshot-fantom01.wav"), TEXT("shoot"));
+	Sound::getInstance()->registerFile(TEXT("8bit-act07_stage04.mp3"), TEXT("bgm"));
 	Sound::getInstance()->request(TEXT("bgm"));
 
 	fighter.init();

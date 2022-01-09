@@ -6,7 +6,6 @@
 EnemyB::EnemyB() : Enemy() 
 {
 	point = 10;
-	phase = 0;
 }
 
 
@@ -18,13 +17,11 @@ void EnemyB::init()
 {
 	FlyingObject::init();
 
-	phase = App::rand() * M_PI;	// M_PI‚ÍƒÎ
-
 	x = 100 + 500 * App::rand();
 	y = 100 + 200 * App::rand();
 
-	vx = 150 + 200 * App::rand();
-	vy = 150 + 200 * App::rand();
+	vx = -800 * App::rand();
+	vy = 0;
 
 	radius = 20;
 }
@@ -45,7 +42,10 @@ void EnemyB::update()
 	if (dt > 1.0 / 30)
 		dt = 1.0 / 30;
 
-	dx = vx * sin(2 * mt + phase) * dt;
+	if (x > 800 || x < 0)
+		vx = -vx;
+
+	dx = vx * dt;
 	dy = vy * cos(5 * mt + phase) * dt;
 
 	x += dx;
